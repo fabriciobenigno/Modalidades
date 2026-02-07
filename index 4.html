@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Portal de Cursos</title>
+
+<style>
+
+/* ===== ANIMAÇÃO DE ENTRADA ===== */
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: linear-gradient(135deg,#0b2d5c,#0f4aa1);
+    font-family: Arial, Helvetica, sans-serif;
+    animation: entradaSite 0.8s ease;
+}
+
+@keyframes entradaSite{
+    from{
+        opacity:0;
+        transform: scale(0.95);
+    }
+    to{
+        opacity:1;
+        transform: scale(1);
+    }
+}
+
+/* ===== CONTAINER ===== */
+.container{
+    text-align:center;
+    background: rgba(255,255,255,0.08);
+    padding:40px 30px;
+    border-radius:20px;
+    box-shadow:0 0 25px rgba(0,0,0,0.4);
+    width:90%;
+    max-width:520px;
+}
+
+/* ===== TÍTULO ===== */
+h1{
+    color:#ffffff;
+    margin-bottom:30px;
+    font-size:26px;
+}
+
+/* ===== OPÇÕES ===== */
+.opcao{
+    width:100%;
+    padding:18px;
+    margin:14px 0;
+    font-size:20px;
+    border-radius:14px;
+    border:none;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    font-weight:bold;
+}
+
+/* ===== OPÇÃO ATIVA ===== */
+.opcao.ativa{
+    background:#ffffff;
+    color:#0b2d5c;
+}
+
+.opcao.ativa:hover{
+    background:#e6e6e6;
+    transform: scale(1.03);
+}
+
+/* ===== OPÇÃO DESATIVADA ===== */
+.opcao.desativada{
+    background: rgba(255,255,255,0.35);
+    color:#e0e0e0;
+    cursor:not-allowed;
+}
+
+/* ===== CRÉDITO ===== */
+.credito{
+    position: fixed;
+    bottom: 6px;
+    right: 10px;
+    font-size: 9px;
+    opacity: 0.25;
+    color: #ffffff;
+    pointer-events: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Selecione a modalidade</h1>
+
+    <button class="opcao ativa" onclick="irParaEAD()">
+        Graduação EAD / Híbrido
+    </button>
+
+    <button class="opcao desativada">
+        Pós-graduação
+    </button>
+
+    <button class="opcao desativada">
+        Técnico
+    </button>
+
+    <button class="opcao desativada">
+        Profissionalizante
+    </button>
+</div>
+
+<div class="credito">Desenvolvido por Fabricio Benigno</div>
+
+<script>
+function irParaEAD(){
+    window.location.href = "https://fabriciobenigno.github.io/EAD-Hibrido/";
+}
+</script>
+
+</body>
+</html>
