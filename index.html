@@ -37,7 +37,7 @@ body{
     border-radius:20px;
     box-shadow:0 0 25px rgba(0,0,0,0.4);
     width:90%;
-    max-width:520px;
+    max-width:560px;
 }
 
 /* ===== TÍTULO ===== */
@@ -60,7 +60,6 @@ h1{
     font-weight:bold;
 }
 
-/* ===== OPÇÃO ATIVA ===== */
 .opcao.ativa{
     background:#ffffff;
     color:#0b2d5c;
@@ -71,11 +70,36 @@ h1{
     transform: scale(1.03);
 }
 
-/* ===== OPÇÃO DESATIVADA ===== */
-.opcao.desativada{
-    background: rgba(255,255,255,0.35);
-    color:#e0e0e0;
-    cursor:not-allowed;
+/* ===== IDENTIFICAÇÃO DAS MODALIDADES – PADRÃO INSTITUCIONAL ===== */
+.identificacao-modalidades{
+    margin-top:34px;
+    padding-top:18px;
+    border-top:1px solid rgba(255,255,255,0.25);
+    color:#ffffff;
+    font-size:13.5px;
+    line-height:1.6;
+    text-align:left;
+}
+
+.identificacao-modalidades h2{
+    font-size:15px;
+    font-weight:600;
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.identificacao-modalidades p{
+    margin-bottom:10px;
+}
+
+.identificacao-modalidades ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.identificacao-modalidades li{
+    margin:5px 0;
 }
 
 /* ===== CRÉDITO ===== */
@@ -105,13 +129,25 @@ h1{
         Pós-graduação
     </button>
 
-    <button class="opcao desativada">
+    <button class="opcao ativa" onclick="irParaTecnico()">
         Técnico
     </button>
 
-    <button class="opcao desativada">
+    <button class="opcao ativa" onclick="irParaProfissionalizante()">
         Profissionalizante
     </button>
+
+    <div class="identificacao-modalidades">
+        <h2>Identificação das Modalidades Acadêmicas</h2>
+        <p>As siglas abaixo são utilizadas para identificar a modalidade acadêmica dos cursos ofertados neste portal.</p>
+        <ul>
+            <li><strong>EGRAD</strong> – Cursos de Graduação na modalidade EAD ou Híbrida</li>
+            <li><strong>ESPRE</strong> – Cursos de Especialização na modalidade EAD ou Híbrida</li>
+            <li><strong>EPOS</strong> – Cursos de Pós-graduação na modalidade EAD</li>
+            <li><strong>ETEC</strong> – Cursos Técnicos</li>
+            <li><strong>EPRO</strong> – Cursos Profissionalizantes</li>
+        </ul>
+    </div>
 </div>
 
 <div class="credito">Desenvolvido por Fabricio Benigno</div>
@@ -123,6 +159,14 @@ function irParaEAD(){
 
 function irParaPos(){
     window.location.href = "https://fabriciobenigno.github.io/p-s-Gradua-o/";
+}
+
+function irParaTecnico(){
+    window.location.href = "https://fabriciobenigno.github.io/T-cnico/";
+}
+
+function irParaProfissionalizante(){
+    window.location.href = "https://fabriciobenigno.github.io/Profissionalizantes/";
 }
 </script>
 
