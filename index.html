@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portal de Cursos</title>
 
 <style>
@@ -9,7 +10,7 @@
 /* ===== ANIMAÇÃO DE ENTRADA ===== */
 body{
     margin:0;
-    height:100vh;
+    min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -38,6 +39,7 @@ body{
     box-shadow:0 0 25px rgba(0,0,0,0.4);
     width:90%;
     max-width:560px;
+    box-sizing:border-box;
 }
 
 /* ===== TÍTULO ===== */
@@ -51,7 +53,7 @@ h1{
 .opcao{
     width:100%;
     padding:18px;
-    margin:14px 0;
+    margin:12px 0;
     font-size:20px;
     border-radius:14px;
     border:none;
@@ -113,6 +115,41 @@ h1{
     pointer-events: none;
 }
 
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width:768px){
+    h1{
+        font-size:22px;
+        margin-bottom:20px;
+    }
+    .opcao{
+        padding:14px;
+        font-size:18px;
+        margin:10px 0;
+    }
+    .container{
+        padding:30px 20px;
+    }
+    .identificacao-modalidades{
+        font-size:12.5px;
+    }
+}
+
+@media (max-width:480px){
+    h1{
+        font-size:20px;
+    }
+    .opcao{
+        padding:12px;
+        font-size:16px;
+    }
+    .container{
+        padding:25px 15px;
+    }
+    .identificacao-modalidades{
+        font-size:12px;
+    }
+}
+
 </style>
 </head>
 
@@ -121,21 +158,10 @@ h1{
 <div class="container">
     <h1>Selecione a modalidade</h1>
 
-    <button class="opcao ativa" onclick="irParaEAD()">
-        Graduação EAD / Híbrido
-    </button>
-
-    <button class="opcao ativa" onclick="irParaPos()">
-        Pós-graduação
-    </button>
-
-    <button class="opcao ativa" onclick="irParaTecnico()">
-        Técnico
-    </button>
-
-    <button class="opcao ativa" onclick="irParaProfissionalizante()">
-        Profissionalizante
-    </button>
+    <button class="opcao ativa" onclick="irParaEAD()">Graduação EAD / Híbrido</button>
+    <button class="opcao ativa" onclick="irParaPos()">Pós-graduação</button>
+    <button class="opcao ativa" onclick="irParaTecnico()">Técnico</button>
+    <button class="opcao ativa" onclick="irParaProfissionalizante()">Profissionalizante</button>
 
     <div class="identificacao-modalidades">
         <h2>Identificação das Modalidades Acadêmicas</h2>
