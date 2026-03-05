@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Cursos</title>
+
+  <style>
+    :root{
+      --brand:#0b2d5c;
+      --brand-2:#0f4aa1;
+      --ink:#0b1b2b;
+      --muted:#5c6b7a;
+      --bg:#f3f6fb;
+      --card:#ffffff;
+      --line:rgba(11,45,92,0.12);
+      --shadow: 0 14px 35px rgba(14, 28, 50, 0.12);
+      --shadow2: 0 8px 18px rgba(14, 28, 50, 0.10);
+      --radius:18px;
+      --radius2:14px;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 28px 14px 46px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(1000px 520px at 18% 12%, rgba(15,74,161,0.12), transparent 62%),
+        radial-gradient(900px 520px at 82% 28%, rgba(11,45,92,0.10), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 55%, #eef3fb 100%);
+      color: var(--ink);
+      animation: entradaSite .55s ease;
+    }
+
+    @keyframes entradaSite{
+      from{ opacity:0; transform: translateY(10px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+
+    .container{
+      width: 100%;
+      max-width: 720px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .topbar{
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+      padding: 18px 22px;
+      color: #fff;
+    }
+
+    .topbar h1{
+      margin:0;
+      font-size: 20px;
+      letter-spacing: 0.2px;
+      font-weight: 800;
+    }
+
+    .topbar p{
+      margin: 6px 0 0;
+      font-size: 13px;
+      opacity: 0.92;
+      line-height: 1.5;
+    }
+
+    .content{
+      padding: 18px 18px 10px;
+    }
+
+    .section-title{
+      margin: 6px 4px 12px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: .2px;
+      text-transform: uppercase;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 640px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .btn{
+      width:100%;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: var(--radius2);
+      padding: 14px 14px;
+      cursor:pointer;
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      box-shadow: var(--shadow2);
+      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+      text-align:left;
+      outline: none;
+    }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(11,45,92,0.22);
+      box-shadow: 0 16px 40px rgba(14, 28, 50, 0.14);
+    }
+
+    .btn:active{ transform: translateY(0); }
+
+    .btn:focus-visible{
+      box-shadow: 0 0 0 3px rgba(15,74,161,0.18), var(--shadow2);
+      border-color: rgba(15,74,161,0.35);
+    }
+
+    .code-badge{
+      flex: 0 0 auto;
+      min-width: 64px;
+      height: 30px;
+      padding: 0 10px;
+      border-radius: 999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      letter-spacing: .6px;
+      font-size: 12px;
+      color: #fff;
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+      box-shadow: 0 10px 20px rgba(11,45,92,0.20);
+      margin-top: 2px;
+    }
+
+    .btn-main{
+      min-width: 0;
+      flex: 1 1 auto;
+      display:flex;
+      flex-direction:column;
+      gap: 3px;
+    }
+
+    .btn-title{
+      margin:0;
+      font-size: 15px;
+      font-weight: 850;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .btn-sub{
+      margin:0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .btn-sub strong{
+      color: var(--brand);
+      font-weight: 900;
+    }
+
+    .arrow{
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      border: 1px solid rgba(11,45,92,0.12);
+      background: rgba(15,74,161,0.06);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: var(--brand);
+      font-weight: 900;
+      margin-left: 2px;
+      margin-top: 2px;
+    }
+
+    .codes-box{
+      margin-top: 14px;
+      padding: 14px 14px;
+      border-radius: var(--radius2);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(15,74,161,0.05), rgba(11,45,92,0.02));
+    }
+
+    .codes-box h2{
+      margin:0 0 10px;
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--ink);
+      letter-spacing: .2px;
+    }
+
+    .codes{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 12px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    @media (max-width: 640px){
+      .codes{ grid-template-columns: 1fr; }
+    }
+
+    .codes strong{
+      color: var(--brand);
+      font-weight: 900;
+    }
+
+    /* Rodapé (crédito central + botões centralizados abaixo) */
+    .actions{
+      padding: 16px 18px 18px;
+      border-top: 1px solid rgba(11,45,92,0.10);
+      background: rgba(243,246,251,0.55);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 12px;
+      text-align:center;
+    }
+
+    .dev{
+      font-size: 12.5px;
+      color: var(--muted);
+      font-weight: 750;
+    }
+
+    .dev strong{
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    .socials{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content:center;
+    }
+
+    .social{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(11,45,92,0.14);
+      background: #fff;
+      color: var(--ink);
+      text-decoration:none;
+      font-size: 13px;
+      font-weight: 850;
+      transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+      box-shadow: 0 10px 20px rgba(14, 28, 50, 0.08);
+    }
+
+    .social:hover{
+      transform: translateY(-1px);
+      border-color: rgba(15,74,161,0.30);
+      box-shadow: 0 14px 28px rgba(14, 28, 50, 0.10);
+    }
+
+    .social img{
+      width: 18px;
+      height: 18px;
+      display:block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="topbar">
+      <h1>Portal de Cursos</h1>
+      <p>Selecione a modalidade para prosseguir. Os códigos acadêmicos correspondentes constam no próprio botão.</p>
+    </div>
+
+    <div class="content">
+      <div class="section-title">Modalidades</div>
+
+      <div class="grid">
+        <button class="btn" onclick="irParaEAD()" aria-label="Acessar Graduação EAD e Híbrido">
+          <div class="code-badge">EGRAD</div>
+          <div class="btn-main">
+            <p class="btn-title">Graduação EAD / Híbrido</p>
+            <p class="btn-sub"><strong>EGRAD</strong> → Graduação (EAD / Híbrida)</p>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+        </button>
+
+        <button class="btn" onclick="irParaSemipresencial()" aria-label="Acessar Semi-presencial">
+          <div class="code-badge">ESPRE</div>
+          <div class="btn-main">
+            <p class="btn-title">Semi-presencial</p>
+            <p class="btn-sub"><strong>ESPRE</strong> → Semi-presencial</p>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+        </button>
+
+        <button class="btn" onclick="irParaPos()" aria-label="Acessar Pós-graduação">
+          <div class="code-badge">EPOS</div>
+          <div class="btn-main">
+            <p class="btn-title">Pós-graduação</p>
+            <p class="btn-sub"><strong>EPOS</strong> → Pós-graduação (EAD)</p>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+        </button>
+
+        <button class="btn" onclick="irParaTecnico()" aria-label="Acessar Técnico">
+          <div class="code-badge">ETEC</div>
+          <div class="btn-main">
+            <p class="btn-title">Técnico</p>
+            <p class="btn-sub"><strong>ETEC</strong> → Técnico</p>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+        </button>
+
+        <button class="btn" onclick="irParaProfissionalizante()" aria-label="Acessar Profissionalizante">
+          <div class="code-badge">EPRO</div>
+          <div class="btn-main">
+            <p class="btn-title">Profissionalizante</p>
+            <p class="btn-sub"><strong>EPRO</strong> → Profissionalizante</p>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+        </button>
+      </div>
+
+      <div class="codes-box" aria-label="Códigos acadêmicos">
+        <h2>Códigos</h2>
+        <ul class="codes">
+          <li><strong>EGRAD</strong> → Graduação (EAD / Híbrida)</li>
+          <li><strong>ESPRE</strong> → Semi-presencial</li>
+          <li><strong>EPOS</strong> → Pós-graduação (EAD)</li>
+          <li><strong>ETEC</strong> → Técnico</li>
+          <li><strong>EPRO</strong> → Profissionalizante</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="actions" aria-label="Rodapé">
+      <div class="dev">Desenvolvido por <strong>Fabricio Benigno</strong></div>
+
+      <div class="socials" aria-label="Ações rápidas">
+        <a class="social" href="https://www.instagram.com/fabricio_benigno/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram">
+          <img src="instagram.png" alt="Instagram" />
+          Instagram
+        </a>
+
+        <a class="social" href="https://wa.me/5585996886661" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp">
+          <img src="whatsapp.png" alt="WhatsApp" />
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function irParaEAD(){
+      window.location.href = "https://fabriciobenigno.github.io/EAD-Hibrido/";
+    }
+
+    function irParaSemipresencial(){
+      window.location.href = "https://fabriciobenigno.github.io/EAD-Hibrido/"; // MESMO LINK do EGRAD
+    }
+
+    function irParaPos(){
+      window.location.href = "https://fabriciobenigno.github.io/p-s-Gradua-o/";
+    }
+
+    function irParaTecnico(){
+      window.location.href = "https://fabriciobenigno.github.io/T-cnico/";
+    }
+
+    function irParaProfissionalizante(){
+      window.location.href = "https://fabriciobenigno.github.io/Profissionalizantes/";
+    }
+  </script>
+</body>
+</html>
